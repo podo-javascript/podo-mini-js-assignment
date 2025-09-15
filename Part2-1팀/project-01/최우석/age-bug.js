@@ -6,7 +6,8 @@
  */
 function calculatePrice(age) {
   // 문제가 있는 조건문
-  if (age) {
+  if (age >= 0) {
+    // if의 조건식 값에 age가 0일 때를 포함했습니다!
     if (age <= 3) {
       return '무료';
     } else if (age <= 12) {
