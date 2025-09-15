@@ -4,11 +4,15 @@
 /*
 나이(age)에 따라 요금을 계산 하는 함수
  */
-function calculatePrice(age) {
+// badge 파라미터의 기본값으로 null 지정 <- 이 부분 굳이 null로 설정해야 하는지 의문. 일단 동작은 함..
+function calculatePrice(age, badge = null) {
+  // case에는 조건문을 넣을 수 없기 때문에 switch(true)로 조건식 비교하게 함
   switch (true) {
+    // undefined까지 대응하기 위해 == 연산자로 비교
     case age == null:
       return '❌ 나이를 알 수 없어서 요금을 계산할 수 없습니다.';
-    case age <= 3:
+    // 추가한 badge 파라미터를 통해 '독립유공자'를 받으면 나이 상관없이 '무료'리턴
+    case badge === '독립유공자' || age <= 3:
       return '무료';
     case age <= 12:
       return '5,000원 (어린이)';
@@ -22,8 +26,8 @@ function calculatePrice(age) {
 /*
   전달받은 나이(age)에 따라 가격을 계산하고, HTML에 결과를 표시하는 역할
  */
-function testAge(age) {
-  const result = calculatePrice(age);
+function testAge(age, badge) {
+  const result = calculatePrice(age, badge);
   const display = age === null ? 'null' : `${age}살`;
 
   // document → 브라우저가 HTML 문서를 객체로 표현한 것(DOM의 최상위 진입점)
