@@ -5,20 +5,17 @@
 나이(age)에 따라 요금을 계산 하는 함수
  */
 function calculatePrice(age) {
-  // 문제가 있는 조건문
-  if (age >= 0) {
-    // if의 조건식 값에 age가 0일 때를 포함했습니다!
-    if (age <= 3) {
+  switch (true) {
+    case age == null:
+      return '❌ 나이를 알 수 없어서 요금을 계산할 수 없습니다.';
+    case age <= 3:
       return '무료';
-    } else if (age <= 12) {
+    case age <= 12:
       return '5,000원 (어린이)';
-    } else if (age <= 64) {
+    case age <= 64:
       return '10,000원 (성인)';
-    } else {
+    case age > 64:
       return '3,000원 (경로우대)';
-    }
-  } else {
-    return '❌ 나이를 알 수 없어서 요금을 계산할 수 없습니다.';
   }
 }
 
