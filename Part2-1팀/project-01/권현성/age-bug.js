@@ -1,11 +1,27 @@
 // 놀이공원 요금 계산기
 // 🚨 버그: 0살일 때 요금을 계산할 수 없음
-
 /*
 나이(age)에 따라 요금을 계산 하는 함수
  */
-function calculatePrice(age) {
-    // 문제가 있는 조건문
+    // 문제가 있는 조건문 수정 후
+  function calculatePrice(age) {
+    if (age == null) {
+      return "❌ 나이를 알 수 없어서 요금을 계산할 수 없습니다.";
+  }
+
+  if (age <= 3) {
+      return "무료";
+  } else if (age <= 12) {
+      return "5,000원 (어린이)";
+  } else if (age <= 64) {
+      return "10,000원 (성인)"; 
+  } else {
+      return "3,000원 (경로 우대)";
+  }
+}
+
+  /* 문제가 있는 조건문 수정 전
+    function calculatePrice(age) {
     if (age) {
         if (age <= 3) {
             return "무료";
@@ -20,7 +36,8 @@ function calculatePrice(age) {
         return "❌ 나이를 알 수 없어서 요금을 계산할 수 없습니다.";
     }
 }
-
+  */
+ 
 /*
   전달받은 나이(age)에 따라 가격을 계산하고, HTML에 결과를 표시하는 역할
  */
