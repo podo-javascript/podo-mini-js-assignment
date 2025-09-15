@@ -2,19 +2,31 @@
 ### 과제 1
 다음 코드의 결과를 예측하고 `?` 부분에 알맞은 답을 적어주세요
 ```javascript
-console.log(typeof []);          // ?
-console.log(typeof null);        // ?
-console.log(null == undefined);  // ?
-console.log(null === undefined); // ?
+console.log(typeof []);          
+// 배열은 객체로 취급되어 "object"
+console.log(typeof null);        
+// 자바스크립트에서 null typeof는 "object"
+console.log(null == undefined);  
+// "=="는 null과 undefined가 같다고 판단 함.
+console.log(null === undefined); 
+// "==="는 타입까지 비교하여 "false가 출력"
 ```
 
 ### 과제 2
 올바른 연산자를 선택하세요!
 ```javascript
-const score = 0;           // 0점도 유효한 점수
-const name = "";           // 빈 이름은 "익명"으로
-const url = null;          // 아직 설정 안됨
-const isVip = false;       // 의도적으로 일반회원
+const score = 0;          
+ // 0점도 유효한 점수 
+ // 0도 유요한 값이라 || (OR연산자)를 쓰면 0이 기본값이 되므로 null이나 undefined일 때만 대체하려면 ??(null병합 연산자)를 사용
+const name = "";          
+ // 빈 이름은 "익명"으로
+// 빈 문자열("")이면 "익명"으로 바꾸고 싶으니 falsy값에 대해 대체하는 ||(OR 연산자)를 사용해야 함.
+const url = null;          
+// 아직 설정 안됨  
+// 아직 설정 안 된 것을 나타내는 null 일때만 기본 URL로 대체하려면 ??(null 병합 연산자)가 적절.
+const isVip = false;       
+// 의도적으로 일반회원  
+// 의도적으로 false 값을 유지해야 하니 ||(or연산자)를 쓰면 기본값이 false가 됨 null/undefined일 때를 대체하려면 ?? 연산자.
 
 // TODO: 올바른 연산자 선택
 const finalScore = score ?? 100;    // 0점 유지하고 싶음
