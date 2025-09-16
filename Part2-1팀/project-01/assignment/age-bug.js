@@ -7,17 +7,17 @@
 function calculatePrice(age) {
     // 문제가 있는 조건문
     if (age !== null) {
-        switch(age){
+        switch(true){
             case (age <= 3) : {
                 return "무료";
             }
-            case (3 < age <= 12) : {
+            case (age <= 12) : {
                 return "5,000원 (어린이)";
             } 
-            case (12 < age <= 64) : {
+            case (age <= 64) : {
                 return "10,000원 (성인)";
             }
-            case (64 < age){
+            case (age > 64) : {
                 return "3,000원 (경로우대)";
             }
           }
