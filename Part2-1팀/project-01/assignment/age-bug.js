@@ -4,31 +4,28 @@
 /*
 나이(age)에 따라 요금을 계산 하는 함수
  */
-function calculatePrice(age, badge) {
-    // 문제가 있는 조건문
-    if (age !== null) {
 
-      if(badge == '독립유공자'){
-        return "무료";
-      }  else{
-      switch(true){
-            case (age <= 3) : {
-                return "무료";
-            }
-            case (age <= 12) : {
-                return "5,000원 (어린이)";
-            } 
-            case (age <= 64) : {
-                return "10,000원 (성인)";
-            }
-            case (age > 64) : {
-                return "3,000원 (경로우대)";
-            }
-          }
-      }
-    } 
-    
-    else {
+
+//함수에 badge 파라미터를 추가하여 age,badge 를 받도록하기
+function calculatePrice(age, badge) {
+    //함수에 badge 값이 "독립유공자" 이면 "무료"라고 보여주기
+    if(badge === '독립유공자'){
+      return "무료";
+    }
+    //조건문을 수정해서 0살도 올바르게 처리하기
+    if (age !== null) {
+        //calculatePrice 를 switch case 문으로 변경 하기
+        switch(true){
+              case (age <= 3) : 
+                  return "무료";
+              case (age <= 12) : 
+                  return "5,000원 (어린이)";
+              case (age <= 64) : 
+                  return "10,000원 (성인)";
+              case (age > 64) : 
+                  return "3,000원 (경로우대)";
+        }
+    } else {
         return "❌ 나이를 알 수 없어서 요금을 계산할 수 없습니다.";
     }
   }
