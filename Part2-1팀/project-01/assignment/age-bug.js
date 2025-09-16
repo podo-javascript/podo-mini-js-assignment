@@ -4,10 +4,14 @@
 /*
 나이(age)에 따라 요금을 계산 하는 함수
  */
-function calculatePrice(age) {
+function calculatePrice(age, badge) {
     // 문제가 있는 조건문
     if (age !== null) {
-        switch(true){
+
+      if(badge == '독립유공자'){
+        return "무료";
+      }  else{
+      switch(true){
             case (age <= 3) : {
                 return "무료";
             }
@@ -21,10 +25,14 @@ function calculatePrice(age) {
                 return "3,000원 (경로우대)";
             }
           }
-    } else {
+      }
+    } 
+    
+    else {
         return "❌ 나이를 알 수 없어서 요금을 계산할 수 없습니다.";
     }
-}
+  }
+
 
 
 
