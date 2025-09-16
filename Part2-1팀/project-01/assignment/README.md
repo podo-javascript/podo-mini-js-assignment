@@ -2,10 +2,10 @@
 ### 과제 1
 다음 코드의 결과를 예측하고 `?` 부분에 알맞은 답을 적어주세요
 ```javascript
-console.log(typeof []);          // ?
-console.log(typeof null);        // ?
-console.log(null == undefined);  // ?
-console.log(null === undefined); // ?
+console.log(typeof []);          // 'object'
+console.log(typeof null);        // 'object' < 이게 함정!
+console.log(null == undefined);  // 'true'
+console.log(null === undefined); // 'false'
 ```
 
 ### 과제 2
