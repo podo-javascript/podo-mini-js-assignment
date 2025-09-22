@@ -1,10 +1,9 @@
 import { useState } from 'react';
 
-const WORDS = 'apple';
-
 function App() {
   const [text, setText] = useState('');
   const [overlap, setOverlap] = useState(0);
+  const [words, setWords] = useState('');
 
   // 글자별 빈도 계산
   const getFrequency = (str) => {
@@ -15,23 +14,29 @@ function App() {
     return freq;
   };
 
-  const calculateOverlap = (inputStr) => {
-    const wordsFreq = getFrequency(WORDS);
+  const calculateOverlap = (inputStr, targetStr) => {
+    const targetFreq = getFrequency(targetStr);
     const inputFreq = getFrequency(inputStr);
 
     let total = 0;
     for (let char in inputFreq) {
-      if (wordsFreq[char]) {
-        total += Math.min(wordsFreq[char], inputFreq[char]);
+      if (targetFreq[char]) {
+        total += Math.min(targetFreq[char], inputFreq[char]);
       }
     }
     return total;
   };
 
-  const handleChange = (e) => {
+  const handleTextChange = (e) => {
     const value = e.target.value;
     setText(value);
-    setOverlap(calculateOverlap(value));
+    setOverlap(calculateOverlap(value, words));
+  };
+
+  const handleWordChange = (e) => {
+    const value = e.target.value;
+    setWords(value);
+    setOverlap(calculateOverlap(text, value));
   };
 
   return (
@@ -39,11 +44,16 @@ function App() {
       <p>같은 글자수 :{overlap}</p>
       <p>
         입력값과 WORDS 가 동일한가? :
-        {WORDS === text ? ' 🎉 Collect!' : ' 불일치'}
+        {words === text ? ' 🎉 Collect!' : ' 불일치'}
       </p>
-      <p>대상 문자 : {WORDS}</p>
+      <p>대상 문자 : {words}</p>
       <p>input Text : {text}</p>
-      <input type="text" value={text} onChange={handleChange} />
+      <p>
+        입력 1 : <input type="text" value={text} onChange={handleTextChange} />
+      </p>
+      <p>
+        입력 2 : <input type="text" value={words} onChange={handleWordChange} />
+      </p>
     </div>
   );
 }
